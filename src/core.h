@@ -46,8 +46,8 @@
 #include "mathlib/vector.h"
 #include "mathlib/matrix.h"
 /*------------------------------------------------------*/
-#define loop0i(end_l) for ( int i=0;i<end_l;++i )
-#define loop0j(end_l) for ( int j=0;j<end_l;++j )
+//#define loop0i(end_l) for ( int i=0;i<end_l;++i )
+//#define loop0j(end_l) for ( int j=0;j<end_l;++j )
 #define loopi(start_l,end_l) for ( int i=start_l;i<end_l;++i )
 #define loopj(start_l,end_l) for ( int j=start_l;j<end_l;++j )
 #define loopk(start_l,end_l) for ( int k=start_l;k<end_l;++k )
@@ -88,48 +88,47 @@
 /*------------------------------------------------------*/
 struct intfloat
 {
-	union {int i;float f;uint ui;};
+	union { int i; float f; uint ui; };
 };
 /*------------------------------------------------------*/
-class uchar4 
-{ 
-	public:
+class uchar4
+{
+public:
 
-	uchar x,y,z,w;
+	uchar x, y, z, w;
 
 	uchar4(){};
-	uchar4(uint x,uint y,uint z,uint w)
+	uchar4(uint x, uint y, uint z, uint w)
 	{
-		this->x=x;
-		this->y=y;
-		this->z=z;
-		this->w=w;
+		this->x = x;
+		this->y = y;
+		this->z = z;
+		this->w = w;
 	}
-	
+
 	uint to_uint()
 	{
-		return x+(y<<8)+(z<<24);//*((uint*)this);
+		return x + (y << 8) + (z << 24);//*((uint*)this);
 	};
 	void from_uint(uint a)
 	{
-		x=a;y=a>>8;z=a>>24;//*((uint*)this)=a;
+		x = a; y = a >> 8; z = a >> 24;//*((uint*)this)=a;
 	};
 };
 /*------------------------------------------------------*/
-float cubicInterpolate (float p[4], float x) ;
-float bicubicInterpolate (float p[4][4], float x, float y);
-std::string get_pure_filename ( std::string filename );
-std::string get_path ( std::string filename );
+float cubicInterpolate(float p[4], float x);
+float bicubicInterpolate(float p[4][4], float x, float y);
+std::string get_pure_filename(std::string filename);
+std::string get_path(std::string filename);
 std::string int_to_str(const int x);
-char* str( const char* format, ... );
+char* str(const char* format, ...);
 bool file_exists(char* f);
 std::string get_current_dir();
 void file_get_dir(const char* dirname,
-			 std::vector<std::string>	&listdirs,
-			 std::vector<std::string>	&listfiles,
-			 std::vector<long>			&listfilesize,
-			 char* extension);
-FILE* fopenx( const char *name,const char *mode );
-int splitstr(char* s,char** sp1,char** sp2,char** sp3);
+	std::vector<std::string>	&listdirs,
+	std::vector<std::string>	&listfiles,
+	std::vector<long>			&listfilesize,
+	char* extension);
+FILE* fopenx(const char *name, const char *mode);
+int splitstr(char* s, char** sp1, char** sp2, char** sp3);
 /*------------------------------------------------------*/
-		
